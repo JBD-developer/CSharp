@@ -24,6 +24,18 @@ namespace Practice02
             long g = -5000_0000_0000;
             ulong h = 200_0000_0000_0000;
             Console.WriteLine($"g={g}, h = {h}");
+
+            byte bA = 240; //10진수 리터럴
+            Console.WriteLine($"bA = {bA}");
+
+            byte bB = 0b1111_0000; //2진수 리터럴
+            Console.WriteLine($"bB = {bB}");
+
+            byte bC = 0XF0;//16진수 리터럴
+            Console.WriteLine($"bC = {bC}");
+
+            uint uD = 0x1234_abcd; //16진수 리터럴
+            Console.WriteLine($"uD = {uD}");
         }
     }
 }
