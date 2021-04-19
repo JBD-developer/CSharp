@@ -47,6 +47,8 @@ namespace Practice25_1
             str_list[0] = "abc";
             str_list[1] = "def";
             str_list[2] = "ghi";
+            str_list[3] = "jkl";
+
 
             for (int i = 0; i < str_list.Length; i++)
             {
@@ -57,6 +59,7 @@ namespace Practice25_1
             int_list[0] = 1;
             int_list[1] = 2;
             int_list[2] = 3;
+            int_list[3] = 4;
 
             for (int i = 0; i < int_list.Length; i++)
             {
