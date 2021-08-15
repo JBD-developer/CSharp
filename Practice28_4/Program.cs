@@ -12,21 +12,21 @@ namespace Practice28_4
         static void Main(string[] args)
         {
             StreamWriter sw = new StreamWriter("a.txt");
-            sw.Write(Console.ReadLine());
-            ConsoleKeyInfo key = Console.ReadKey();
-
-            while (key.Key != ConsoleKey.Escape)
+           
+            sw.WriteLine("sw.Write()"); 
+            sw.WriteLine("sw.Write()"); 
+            sw.WriteLine("sw.WriteLine()"); 
+            sw.WriteLine("sw.WriteLine()"); 
+            sw.Close(); 
+            StreamReader sr = new StreamReader("a.txt"); 
+            
+            while (sr.Peek() >= 0) 
             {
-                sw.WriteLine(Console.ReadLine());
-            }
-            sw.Close();
-
-            StreamReader sr = new StreamReader("a.txt");
-            while (sr.Peek()>0)
-            {
-                Console.WriteLine(sr.ReadLine());
-            }
+                Console.WriteLine(sr.ReadLine()); 
+            } 
             sr.Close();
+
+   
             Console.ReadLine();
         }
     }
