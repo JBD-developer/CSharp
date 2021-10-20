@@ -12,7 +12,7 @@ namespace Practice30
         private static SqlConnection _sqlCon;
         private static SqlCommand _sqlCmd;
         private static ConsoleKeyInfo _keyInfo;
-
+        private static SqlDataReader _sqlReader;
         static void Main(string[] args)
         {
             try
@@ -44,7 +44,7 @@ namespace Practice30
 
                         case "R":
                             #region SELECT
-
+                            LF_Basic_Sel();
                             #endregion
                             break;
 
@@ -68,7 +68,7 @@ namespace Practice30
             bool bDBCheck = false;
              try
             {
-                _sqlCon = new SqlConnection("Server=127.0.0.1; DataBase=Mes; uid=sa; pwd=admin@Server");
+                _sqlCon = new SqlConnection("Server=127.0.0.1; DataBase=Northwind; uid=sa; pwd=admin@Server");
                 _sqlCon.Open();
                 bDBCheck = true;
             }
@@ -79,5 +79,39 @@ namespace Practice30
             }
             return bDBCheck;
         }
+
+        private static List<string> LF_Basic_Sel()
+        {
+            List<string> listTemp = new List<string>();
+            try
+            {
+                if (LF_Connection())
+                {
+                    
+                    string sQuery = "SELECT *  FROM  CATEGORIES"; 
+                    _sqlCmd = new SqlCommand(sQuery, _sqlCon);
+                    _sqlReader = _sqlCmd.ExecuteReader();
+
+                    while (_sqlReader.Read())
+                    {
+                        Console.WriteLine(_sqlReader["CATEGORYID"].ToString()+ " " +
+                                          _sqlReader["CATEGORYNAME"].ToString()+ " " +
+                                          _sqlReader["DESCRIPTION"].ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed")
+                }
+                _sqlCon.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
+            return listTemp; 
+        }
+
     }
 }
